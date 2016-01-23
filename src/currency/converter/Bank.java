@@ -5,7 +5,7 @@ package currency.converter;
  */
 public class Bank {
 
-
+//test
     public static void main(String[] args){
         Money usd = Money.getUSD(500);
         System.out.println(usd.getValue() + " " + usd.getCurrency() + " are " + usd.toEuro().getValue() + " " + usd.getCurrency());

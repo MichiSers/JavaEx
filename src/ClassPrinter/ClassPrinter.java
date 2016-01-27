@@ -1,10 +1,8 @@
-package ClassPrinter;
+package classPrinter;
 
-import java.lang.reflect.Field;
-import java.lang.reflect.Modifier;
+import java.lang.reflect.*;
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.LinkedList;
 import java.util.List;
 
 /**
@@ -13,8 +11,8 @@ import java.util.List;
 public class ClassPrinter {
 
     public static void main(String [] args){
-//        ClassPrinter cp = new ClassPrinter("java.util.LinkedHashMap");
-        ClassPrinter cp = new ClassPrinter("ClassPrinter.ClassPrinter");
+//        classPrinter cp = new classPrinter("java.util.LinkedHashMap");
+        ClassPrinter cp = new ClassPrinter("classPrinter.classPrinter");
         cp.printClass();
     }
 
@@ -34,6 +32,7 @@ public class ClassPrinter {
     public void printClass(){
         printInheritance();
         printFields();
+        printMethods();
 
 
     }
@@ -72,5 +71,26 @@ public class ClassPrinter {
                 System.out.println();
             }
         }
+    }
+
+    public void printMethods(){
+        ArrayList<Method> methods = new ArrayList<>(Arrays.asList(clazz.getDeclaredMethods()));
+        ArrayList<Parameter> parameters;
+        for(Method method : methods){
+            System.out.print(Modifier.toString(method.getModifiers())+" ");
+            System.out.print(method.getName() + " ");
+            System.out.print("( ");
+            for(TypeVariable p : method.getTypeParameters()){
+//                System.out.print(Modifier.toString(p.getName()));
+//                if(p.isNamePresent()){
+                    System.out.print(p.getName());
+//                }
+            }
+            System.out.println(" )");
+        }
+    }
+
+    public void printModifier(int curMods){
+//        if(Modifier.is)
     }
 }
